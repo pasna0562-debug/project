@@ -104,4 +104,4 @@
 
 ## Автор проекта:
 
-Djabrailov Ruslan
+Ruslan Djabrailov

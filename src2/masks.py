@@ -12,4 +12,3 @@ def get_mask_account(banc_num: str) -> str:
     if len(banc_str) != 6:
         masked = f"**{banc_str[-4:]}"
     return masked
-

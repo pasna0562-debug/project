@@ -105,4 +105,3 @@
 ## Автор проекта:
 
 Ruslan Djabrailov
-

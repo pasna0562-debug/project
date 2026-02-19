@@ -32,3 +32,4 @@ def test_get_mask_account() -> None:
     # Тест с коротким номером
     with pytest.raises(ValueError):
         get_mask_account("123")
+

@@ -31,7 +31,7 @@ def sort_by_date(data: List[Dict[str, Any]], reverse: bool = True) -> List[Dict[
     False-по возрастанию.
     :return: Новый отсортированный список.
     """
-    return sorted(data, key=lambda x: x['data'], reverse=reverse)
+    return sorted(data, key=lambda x: x['date'], reverse=reverse)
 
 
 data = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},

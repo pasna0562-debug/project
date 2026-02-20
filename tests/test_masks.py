@@ -1,6 +1,6 @@
 import pytest
 
-from src.masks import get_mask_account, get_mask_card_number
+from src2 import get_mask_account, get_mask_card_number
 
 
 def test_get_mask_card_number() -> None:
@@ -32,3 +32,4 @@ def test_get_mask_account() -> None:
     # Тест с коротким номером
     with pytest.raises(ValueError):
         get_mask_account("123")
+

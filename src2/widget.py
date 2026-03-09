@@ -1,6 +1,4 @@
-
-
-from src2 import get_mask_account, get_mask_card_number
+from src2.masks import get_mask_card_number, get_mask_account
 
 
 def mask_account_card(info: str) -> str:
@@ -29,11 +27,10 @@ def get_date(date_str: str) -> str:
     """Принимает строку с датой в формате "2024-03-11Т02:26:18.671407"
     и возвращает строку в формате "11.03.2024".
     """
-    year = date_str[0:4]
-    month = date_str[5:7]
-    day = date_str[8:10]
+    if len(date_str) < 10:
+        raise ValueError("Некорректный формат даты")
 
-    return f"{day}.{month}.{year}"
+    return f"{date_str[8:10]}.{date_str[5:7]}.{date_str[:4]}"
 
 
 print(get_date("2024-03-11T02:26:18.671407"))

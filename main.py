@@ -1,4 +1,4 @@
-from src.masks import get_mask_account, get_mask_card_number
+from src2 import get_mask_account, get_mask_card_number
 
 
 def main() -> None:
@@ -15,3 +15,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

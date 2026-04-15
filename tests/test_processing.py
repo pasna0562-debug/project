@@ -130,6 +130,7 @@ def test_sort_by_date_missing_date() -> None:
     assert result[1]["id"] == 1
     assert result[2]["id"] == 4
 
+
 def test_sort_by_date_same_dates() -> None:
     """Тест сортировки с одинаковыми датами"""
     transactions = [
@@ -217,7 +218,7 @@ def test_sort_by_date_with_fixture(transactions_with_different_dates: List[Dict[
 
     # Проверяем, что вторая дата больше третьей
     assert sorted_desc[1]["date"], \
-    f"Вторая дата {sorted_desc[1]['date']} должна быть новее третьей {sorted_desc[2]['date']}"
+        f"Вторая дата {sorted_desc[1]['date']} должна быть новее третьей {sorted_desc[2]['date']}"
 
 
 def test_sort_by_date_ascending_with_fixture(transactions_with_different_dates: List[Dict[str, Any]]) -> None:

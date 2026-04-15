@@ -31,6 +31,3 @@ def test_get_mask_account() -> None:
     # Тест с коротким номером
     result_short = get_mask_account("123")
     assert result_short == "Некоректный номер счета"
-
-
-

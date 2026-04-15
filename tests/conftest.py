@@ -227,3 +227,158 @@ def all_test_data(
         "accounts": valid_account_numbers,
         "dates": valid_date_strings
     }
+
+
+@pytest.fixture
+def malformed_transactions():
+    """Фикстура с транзакциями, имеющими неправильную структуру"""
+    return [
+        {
+            "id": 1,
+            "description": "Транзакция без operationAmount",
+            "state": "EXECUTED"
+        },
+        {
+            "id": 2,
+            "operationAmount": {
+                "amount": "100.00"
+                # Отсутствует поле currency
+            },
+            "description": "Транзакция без currency"
+        },
+        {
+            "id": 3,
+            "operationAmount": {
+                "amount": "200.00",
+                "currency": {
+                    "name": "USD"
+                    # Отсутствует поле code
+                }
+            },
+            "description": "Транзакция без code"
+        },
+        {
+            "id": 4,
+            "operationAmount": "это строка, а не словарь",
+            "description": "Некорректный тип operationAmount"
+        }
+    ]
+
+
+@pytest.fixture
+def transactions_without_descriptions():
+    """Фикстура с транзакциями, у которых нет описаний"""
+    return [
+        {
+            "id": 1,
+            "state": "EXECUTED",
+            "date": "2018-06-30T02:08:58.425572",
+            "operationAmount": {
+                "amount": "9824.07",
+                "currency": {
+                    "name": "USD",
+                    "code": "USD"
+                }
+            },
+            # Отсутствует поле description
+            "from": "Счет 75106830613657916952",
+            "to": "Счет 11776614605963066702"
+        },
+        {
+            "id": 2,
+            "state": "EXECUTED",
+            "date": "2019-04-04T23:20:05.206878",
+            "operationAmount": {
+                "amount": "79114.93",
+                "currency": {
+                    "name": "USD",
+                    "code": "USD"
+                }
+            },
+            "description": None,  # Описание равно None
+            "from": "Счет 19708645243227258542",
+            "to": "Счет 75651667383060284188"
+        },
+        {
+            "id": 3,
+            "state": "EXECUTED",
+            "date": "2019-03-23T01:09:46.296404",
+            "operationAmount": {
+                "amount": "43318.34",
+                "currency": {
+                    "name": "руб.",
+                    "code": "RUB"
+                }
+            },
+            "description": "",  # Пустое описание
+            "from": "Visa Classic 6831982476737658",
+            "to": "Visa Platinum 8990922113665229"
+        }
+    ]
+
+
+@pytest.fixture
+def mixed_transactions():
+    """Фикстура со смешанными транзакциями (с описаниями и без)"""
+    return [
+        {
+            "id": 1,
+            "description": "Транзакция с описанием 1"
+        },
+        {
+            "id": 2
+            # Нет описания
+        },
+        {
+            "id": 3,
+            "description": "Транзакция с описанием 2"
+        },
+        {
+            "id": 4,
+            "description": None  # Описание равно None
+        },
+        {
+            "id": 5,
+            "description": ""  # Пустое описание
+        },
+        {
+            "id": 6,
+            "description": "Транзакция с описанием 3"
+        }
+    ]
+
+
+@pytest.fixture
+def single_transaction():
+    """Фикстура с одной транзакцией"""
+    return [
+        {
+            "id": 1,
+            "description": "Единственная транзакция"
+        }
+    ]
+
+
+# Фикстуры
+@pytest.fixture
+def small_range():
+    """Фикстура с малым диапазоном номеров"""
+    return (1, 5)
+
+
+@pytest.fixture
+def medium_range():
+    """Фикстура со средним диапазоном номеров"""
+    return (1000, 1010)
+
+
+@pytest.fixture
+def edge_range_start():
+    """Фикстура с начальными значениями диапазона"""
+    return (1, 10)
+
+
+@pytest.fixture
+def edge_range_end():
+    """Фикстура с конечными значениями диапазона"""
+    return (9999_9999_9999_9990, 9999_9999_9999_9995)
